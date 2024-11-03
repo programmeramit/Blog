@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block navbar %}
+
+
+
+{% endblock navbar %}
+
+
+
+
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+{% endif %}
+
+<div class="d-inline-flex p-2 bd-highlight flex-wrap " style="margin-top:20px">
+
+{% if blogs %}
+
+{% for blog in blogs  %}
+
+
+<div class="card m-2" style="width: 18rem;">
+    {% if blog.image %}
+
+
+    <img class="card-img-top" src="{{ blog.image.url }}" alt="{{ blog.title }}">
+    {% endif %}
+
+    <div class="card-body">
+      <h5 class="card-title">{{blog.title}}</h5>
+      <p class="card-text">{{blog.description}}</p>
+      <span>{{blog.created_at}}</span>
+      <a href="blog/{{blog.id}}" class="btn btn-primary">Read Blog</a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+{% endfor %}
+
+
+{% endif %}
+
+
+</div>
+
+{% endblock content %}
+
+
+

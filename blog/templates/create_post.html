@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.media }}  <!-- Load CKEditor media files -->
+    {{ form.as_p }}
+<button type="submit">Create Post </button>
+</form>
+
+{% if form.image.errors %}
+<div class="error">{{ form.image.errors }}</div>  <!-- Display image errors -->
+{% endif %}
+
+
+{% endblock content %}
+
+
+
+
+
